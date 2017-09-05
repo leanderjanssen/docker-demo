@@ -9,11 +9,8 @@ node {
      def myTestContainer = docker.image('node:4.6')
      myTestContainer.pull()
      myTestContainer.inside {
-       withEnv([
-           'HOME=.',
-       ])
-       sh 'npm install --only=dev'
-       sh 'npm test'
+       sh 'HOME=. npm install --only=dev'
+       sh 'HOME=. npm test'
      }
    }
    stage('test with a DB') {
